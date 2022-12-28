@@ -4,9 +4,9 @@ import './Story.css';
 import ImageCard from './ImageCard';
 import StoryText from './StoryText';
 import { useParams } from 'react-router-dom';
-import { Button } from '@mui/material';
 import Test from './Test';
 import { useLangContext } from './LocalizationProvider';
+import FunnyButton from './FunnyButton';
 
 function Loading() {
   const [dots, setDots] = useState<number>(0);
@@ -62,7 +62,10 @@ function Story() {
     <div className='story'>
       <ImageCard imgName={storyImg} />
       <StoryText paragraphs={storyText} />
-      {showTest ? <Test questions={storyQuestions} /> : <Button variant="contained" onClick={onClick}>Take the Test</Button>}
+      {showTest ?
+        <Test questions={storyQuestions} /> :
+        <FunnyButton onClick={onClick}>Take the Test</FunnyButton>
+      }
     </div> : <Loading />
   );
 }

@@ -1,12 +1,14 @@
 {
     "en": {
+        "msg-create-story": ["Create a story!"],
         "msg-choose-lang": "Language",
         "msg-choose-lvl": "Level",
         "msg-langs": ["English", "Spanish", "Portugues"],
-        "msg-lvls": ["Preschool", "High School", "College"],
+        "msg-lvls": ["Preschool", "High-School", "College"],
         "msg-submit": "Submit Answers"
     },
     "es": {
+        "msg-create-story": ["¡Cree una historia!"],
         "msg-choose-lang": "Idioma",
         "msg-choose-lvl": "Nivel",
         "msg-langs": ["Inglés", "Español", "Portugués"],
@@ -14,6 +16,7 @@
         "msg-submit": "Enviar Respuestas"
     },
     "pt": {
+        "msg-create-story": ["Cree uma história"],
         "msg-choose-lang": "Língua",
         "msg-choose-lvl": "Nível",
         "msg-langs": ["Inglês", "Espanhol", "Português"],

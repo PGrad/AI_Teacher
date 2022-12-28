@@ -1,10 +1,11 @@
-import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CreateStory.css";
-import { useLocalization } from "./LocalizationProvider";
+import FunnyButton from "./FunnyButton";
+import { useGlobal, useLocalization } from "./LocalizationProvider";
 
-type OnSetOption = (option: string) => void;
+type OnSetOption = (option: number) => void;
 interface DropdownProps {
     options: string[],
     label: string,
@@ -12,14 +13,14 @@ interface DropdownProps {
 }
 
 function Dropdown(props: React.PropsWithChildren<DropdownProps>) {
-    let [option, setOption] = useState<string>(props.options[0]);
-    const handleChange = (e: SelectChangeEvent<string>) => {
-        setOption(e.target.value);
-        props.onSetOption(e.target.value);
+    let [option, setOption] = useState<number>(0);
+    const handleChange = (e: SelectChangeEvent<number>) => {
+        setOption(e.target.value as number);
+        props.onSetOption(e.target.value as number);
     };
     return (
         <FormControl>
-            <InputLabel>{props.children}</InputLabel>
+            <InputLabel sx={{ fontFamily: "Rubik Bubbles" }}>{props.children}</InputLabel>
                 <Select
                     value={option}
                     label={props.label}
@@ -27,7 +28,7 @@ function Dropdown(props: React.PropsWithChildren<DropdownProps>) {
                     sx={{ width: "15em" }}
                 >
                     {props.options.map((option, idx) => 
-                        <MenuItem key={idx} value={option}>{option}</MenuItem>
+                        <MenuItem key={idx} value={idx}>{option}</MenuItem>
                     )}
                 </Select>
         </FormControl>
@@ -35,26 +36,30 @@ function Dropdown(props: React.PropsWithChildren<DropdownProps>) {
 }
 
 function CreateStory() {
+    const global = useGlobal();
     const local = useLocalization();
-    const languages: string[] = local("msg-langs") as string[];
-    const levels: string[] = local("msg-lvls") as string[];
-    let [target, setTarget] = useState<string>(languages[0]);
-    let [level, setLevel] = useState<string>(levels[0]);
+    const languagesGlobal: string[] = global("msg-langs") as string[];
+    const levelsGlobal: string[] = global("msg-lvls") as string[];
+    const languagesLocal: string[] = local("msg-langs") as string[];
+    const levelsLocal: string[] = local("msg-lvls") as string[];
+    let [target, setTarget] = useState<string>(languagesGlobal[0]);
+    let [level, setLevel] = useState<string>(levelsGlobal[0]);
     const navigate = useNavigate();
-    const onSetTarget = (target: string) => {
-        setTarget(target);
+    const onSetTarget = (targetIdx: number) => {
+        setTarget(languagesGlobal[targetIdx]);
     };
-    const onSetLevel = (lvl: string) => {
-        setLevel(lvl);
+    const onSetLevel = (lvlIdx: number) => {
+        setLevel(levelsGlobal[lvlIdx]);
     };
     const onSubmit = () => {
         navigate(`/story/${target}/${level}`);
     };
     return (
         <div className="createStory">
-            <Dropdown onSetOption={onSetTarget} options={languages} label={"Language"}>{local("msg-choose-lang")}</Dropdown>
-            <Dropdown onSetOption={onSetLevel} options={levels} label={"Level"}>{local("msg-choose-lvl")}</Dropdown>
-            <Button variant="contained" onClick={onSubmit}>Create Story</Button>
+            <h2>{local("msg-create-story")}</h2>
+            <Dropdown onSetOption={onSetTarget} options={languagesLocal} label={"Language"}>{local("msg-choose-lang")}</Dropdown>
+            <Dropdown onSetOption={onSetLevel} options={levelsLocal} label={"Level"}>{local("msg-choose-lvl")}</Dropdown>
+            <FunnyButton onClick={onSubmit}>Create Story</FunnyButton>
         </div>
     );
 }

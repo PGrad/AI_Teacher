@@ -1,6 +1,7 @@
 import { Button, TextareaAutosize } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import FunnyButton from "./FunnyButton";
 import "./Test.css";
 
 interface TestProps {
@@ -16,7 +17,7 @@ function Finish() {
     return (
         <div className="flush">
             <h3>Good job!</h3>
-            <Button variant="contained" onClick={returnStart}>Return to Start</Button>
+            <FunnyButton onClick={returnStart}>Return to Start</FunnyButton>
         </div>
     )
 }
@@ -27,17 +28,17 @@ function Test(props: TestProps) {
         setDone(true);
     };
     return (
-        <div className="flush">
+        <div className="flush test">
             <h3 className="heading">Test</h3>
             <ul style={{ listStyleType: "none", padding: 0 }}>
                 {props.questions.map((q, idx) =>
-                    <div key={idx}>
+                    <div key={idx} className="question">
                         <li>{`${q}?`}</li>
-                        <TextareaAutosize style={{ width: "400px" }} minRows={3} />
+                        <TextareaAutosize minRows={3} />
                     </div>
                 )}
             </ul>
-            {done ? <Finish /> : <Button variant="contained" onClick={onDone}>Submit Answers</Button>}
+            {done ? <Finish /> : <FunnyButton onClick={onDone}>Submit Answers</FunnyButton>}
         </div>
     );
 }

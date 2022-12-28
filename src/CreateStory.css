@@ -1,3 +1,9 @@
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+}
+
 .createStory {
     display: flex;
     flex-direction: column;
@@ -5,4 +11,10 @@
     justify-content: space-between;
     row-gap: 30px;
     padding: 20px;
+    background-color: azure;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 10px 10px gray;
+    animation: floating 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }

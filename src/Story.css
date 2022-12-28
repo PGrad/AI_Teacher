@@ -1,5 +1,23 @@
-.app {
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+}
+
+.story {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: aliceblue;
+  border-radius: 50px;
+  box-shadow: 10px 10px gray;
+  animation: floating 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  padding: 10px;
+}
+
+.loading {
+  margin: auto;
+  text-align: center;
 }

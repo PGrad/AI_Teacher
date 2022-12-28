@@ -1,0 +1,10 @@
+.heading {
+    text-align: center;
+    margin: auto;
+}
+
+.flush {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

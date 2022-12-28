@@ -1,0 +1,23 @@
+{
+    "en": {
+        "msg-choose-lang": "Language",
+        "msg-choose-lvl": "Level",
+        "msg-langs": ["English", "Spanish", "Portugues"],
+        "msg-lvls": ["Preschool", "High School", "College"],
+        "msg-submit": "Submit Answers"
+    },
+    "es": {
+        "msg-choose-lang": "Idioma",
+        "msg-choose-lvl": "Nivel",
+        "msg-langs": ["Inglés", "Español", "Portugués"],
+        "msg-lvls": ["Preescolar", "Prepa", "Universitario"],
+        "msg-submit": "Enviar Respuestas"
+    },
+    "pt": {
+        "msg-choose-lang": "Língua",
+        "msg-choose-lvl": "Nível",
+        "msg-langs": ["Inglês", "Espanhol", "Português"],
+        "msg-lvls": ["Pré-escola", "Secundário", "Universitário"],
+        "msg-submit": "Enviar Respostas"
+    }
+}

@@ -2,6 +2,7 @@ import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CreateStory.css";
+import { useLocalization } from "./LocalizationProvider";
 
 type OnSetOption = (option: string) => void;
 interface DropdownProps {
@@ -34,24 +35,25 @@ function Dropdown(props: React.PropsWithChildren<DropdownProps>) {
 }
 
 function CreateStory() {
-    const languages: string[] = ["English", "Spanish", "Portuguese"];
-    const levels: string[] = ["Preschool", "High-school", "College"];
-    let [lang, setLang] = useState<string>(languages[0]);
+    const local = useLocalization();
+    const languages: string[] = local("msg-langs") as string[];
+    const levels: string[] = local("msg-lvls") as string[];
+    let [target, setTarget] = useState<string>(languages[0]);
     let [level, setLevel] = useState<string>(levels[0]);
     const navigate = useNavigate();
-    const onSetLanguage = (lang: string) => {
-        setLang(lang);
+    const onSetTarget = (target: string) => {
+        setTarget(target);
     };
     const onSetLevel = (lvl: string) => {
         setLevel(lvl);
     };
     const onSubmit = () => {
-        navigate(`/story/${lang}/${level}`);
+        navigate(`/story/${target}/${level}`);
     };
     return (
         <div className="createStory">
-            <Dropdown onSetOption={onSetLanguage} options={languages} label={"Language"}>Choose Language:</Dropdown>
-            <Dropdown onSetOption={onSetLevel} options={levels} label={"Level"}>Choose Level:</Dropdown>
+            <Dropdown onSetOption={onSetTarget} options={languages} label={"Language"}>{local("msg-choose-lang")}</Dropdown>
+            <Dropdown onSetOption={onSetLevel} options={levels} label={"Level"}>{local("msg-choose-lvl")}</Dropdown>
             <Button variant="contained" onClick={onSubmit}>Create Story</Button>
         </div>
     );

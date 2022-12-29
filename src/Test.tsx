@@ -1,4 +1,4 @@
-import { Button, TextareaAutosize } from "@mui/material";
+import { TextareaAutosize } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FunnyButton from "./FunnyButton";

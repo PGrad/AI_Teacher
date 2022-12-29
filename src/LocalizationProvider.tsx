@@ -1,14 +1,6 @@
 import React, { useContext } from "react";
 import langJson from "./i8n.json";
 
-function zip<T>(a: T[], b: T[]): [T, T][] {
-    const zipped: [T, T][] = [];
-    for (let i = 0; i < a.length; ++i) {
-        zipped.push([a[i], b[i]])
-    }
-    return zipped;
-}
-
 type AcceptedLang = keyof typeof langJson;
 
 // Surprisingly elegant typing!

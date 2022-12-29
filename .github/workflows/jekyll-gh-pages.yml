@@ -42,12 +42,9 @@ jobs:
         run: |
           npm install
           npm run build
-          mkdir AI_Teacher
-          mv build ./AI_Teacher/_site
+          mv build _site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-        with:
-          path: "./AI_Teacher/_site/"
 
   # Deployment job
   deploy:

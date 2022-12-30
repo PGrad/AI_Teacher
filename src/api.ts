@@ -5,7 +5,6 @@ namespace Api {
     let openai: OpenAIApi;
 
     export function init() {
-        console.log(process.env);
         if (!process.env.REACT_APP_OPENAI_API_KEY) {
             throw Error("No API key!");
         }

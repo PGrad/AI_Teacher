@@ -41,9 +41,9 @@ jobs:
       - name: create .env.local
         shell: bash
         env:
-          api_key: ${{ secrets.REACT_APP_OPENAI_API_KEY }}
+          API_KEY: ${{ secrets.REACT_APP_OPENAI_API_KEY }}
         run: |
-          echo "REACT_APP_OPENAI_API_KEY=$api_key" > .env.local
+          echo "REACT_APP_OPENAI_API_KEY=$API_KEY" > .env.local
       - name: npm install and build
         run: |
           npm install

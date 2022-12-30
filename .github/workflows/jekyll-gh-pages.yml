@@ -39,7 +39,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: create .env.local
-        with:
+        shell: bash
+        env:
           api_key: ${{ secrets.REACT_APP_OPENAI_API_KEY }}
         run: |
           echo "$api_key" > .env.local

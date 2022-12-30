@@ -5,6 +5,10 @@ namespace Api {
     let openai: OpenAIApi;
 
     export function init() {
+        if (!process.env.REACT_APP_OPENAI_API_KEY) {
+            throw "No API key!";
+        }
+
         configuration = new Configuration({
             organization: "org-PLOQrmXXbo0UNOqoMEwG6lKE",
             apiKey: process.env.REACT_APP_OPENAI_API_KEY

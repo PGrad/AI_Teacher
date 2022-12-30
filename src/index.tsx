@@ -10,6 +10,7 @@ import { LocalizationProvider } from './LocalizationProvider';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 Api.init();
 root.render(
   <LocalizationProvider lang={navigator.language.split("-")[0]}>

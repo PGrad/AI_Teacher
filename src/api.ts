@@ -6,7 +6,7 @@ namespace Api {
 
     export function init() {
         if (!process.env.REACT_APP_OPENAI_API_KEY) {
-            throw "No API key!";
+            throw Error("No API key!");
         }
 
         configuration = new Configuration({

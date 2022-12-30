@@ -38,17 +38,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: create .env.local
-        shell: bash
-        env:
-          api_key: ${{ secrets.REACT_APP_OPENAI_API_KEY }}
-        run: |
-          echo "$api_key" > .env.local
       - name: npm install and build
         run: |
           npm install
           npm run build
           mv build _site
+      - name: create .env.local
+        shell: bash
+        env:
+          api_key: ${{ secrets.REACT_APP_OPENAI_API_KEY }}
+        run: |
+          echo "$api_key" > _site/.env.local
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 

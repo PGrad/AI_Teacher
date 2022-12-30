@@ -20,7 +20,7 @@ function Dropdown(props: React.PropsWithChildren<DropdownProps>) {
     };
     return (
         <FormControl>
-            <InputLabel sx={{ fontFamily: "Rubik Bubbles" }}>{props.children}</InputLabel>
+            <InputLabel sx={{ fontFamily: "Rubik Bubbles", maxWidth: "fit-content" }}>{props.children}</InputLabel>
                 <Select
                     value={option}
                     label={props.label}

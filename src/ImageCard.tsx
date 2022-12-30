@@ -5,7 +5,11 @@ interface ImageProps {
 }
 
 function ImageCard(props: ImageProps) {
-    return (<img className="storyImg" src={props.imgName} alt={"you're missing out!"} />);
+    return (
+        <div className="imageCard">
+            <img className="storyImg" src={props.imgName} alt={"you're missing out!"} />
+        </div>
+    );
 }
 
 export default ImageCard;

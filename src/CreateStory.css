@@ -11,10 +11,22 @@
     justify-content: space-between;
     row-gap: 30px;
     padding: 20px;
-    background-color: azure;
     border-radius: 0 0 20px 20px;
-    box-shadow: 10px 10px gray;
     animation: floating 10s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
+}
+
+@media (prefers-color-scheme: light) {
+    .createStory {
+        background-color: azure;
+        box-shadow: 10px 10px gray;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .createStory {
+        background-color: #1d0000;
+        box-shadow: 10px 10px #6f6f6f;
+    }
 }

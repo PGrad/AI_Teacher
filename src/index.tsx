@@ -1,26 +1,14 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import CreateStory from './CreateStory';
-import { HashRouter, Route, Routes } from 'react-router-dom';
-import Story from './Story';
-import Api from './api';
-import { LocalizationProvider } from './LocalizationProvider';
+import App from './App';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-Api.init();
 root.render(
-  <LocalizationProvider lang={navigator.language.split("-")[0]}>
-    <HashRouter basename='/'>
-      <Routes>
-        <Route path="/" element={<CreateStory />} />
-        <Route path="/story/:target/:level" element={<Story />} />
-      </Routes>
-    </HashRouter>
-  </LocalizationProvider>
+  <App />
 );
 
 // If you want to start measuring performance in your app, pass a function

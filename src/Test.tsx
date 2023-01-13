@@ -34,7 +34,7 @@ function Test(props: TestProps) {
                 {props.questions.map((q, idx) =>
                     <div key={idx} className="question">
                         <li>{`${q}?`}</li>
-                        <TextareaAutosize minRows={3} />
+                        <TextareaAutosize className="textarea" minRows={3} />
                     </div>
                 )}
             </ul>

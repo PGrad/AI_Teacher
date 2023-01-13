@@ -8,15 +8,27 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: aliceblue;
   border-radius: 50px;
-  box-shadow: 10px 10px gray;
   animation: floating 10s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   padding: 10px;
   font-size: 20px;
   font-family: "Roboto Mono";
+}
+
+@media(prefers-color-scheme: light) {
+  .story {
+    background-color: aliceblue;
+    box-shadow: 10px 10px gray;
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  .story {
+    background-color: #1d0e00; /* Inverted color times two for a little pop */
+    box-shadow: 10px 10px #6f6f6f;
+  }
 }
 
 .loading {

@@ -1,3 +1,10 @@
+.test {
+    border-radius: 20px;
+    border: groove thick;
+    padding: 10px;
+    margin: 10px;
+}
+
 .heading {
     text-align: center;
     margin: auto;
@@ -15,14 +22,22 @@
     flex-direction: column;
     align-items: "stretch";
     font-weight: bold;
-    background-color: white;
 }
 
-.test {
-    background-image: url("../assets/jamboard.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 20px;
-    padding: 10px;
-    margin: 10px;
+.textarea {
+    border-radius: 5px;
+}
+
+@media(prefers-color-scheme: light) {
+    .test {
+        background-color: #fff0f8;
+        border-color: black;
+    }
+}
+
+@media(prefers-color-scheme: dark) {
+    .test {
+        background-color: #001d0e; /* Inverted color times two for a little pop */
+        border-color: white;
+    }
 }

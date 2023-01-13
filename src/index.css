@@ -1,7 +1,20 @@
 html {
   width: 100%;
   height: 100%;
-  background-color: antiquewhite;
+}
+
+@media(prefers-color-scheme: light) {
+  html {
+    background-color: antiquewhite;
+    color: black;
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  html {
+    background-color: #051448; /* Just the inverted color, no multiplication */
+    color: white;
+  }
 }
 
 body {

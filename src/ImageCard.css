@@ -1,5 +1,13 @@
-.imageCard {
-    width: 300px;
+@media (orientation: landscape) {
+    .imageCard {
+        width: 50%;
+    }
+}
+
+@media (orientation: portrait) {
+    .imageCard {
+        max-width: fit-content;
+    }
 }
 
 .storyImg {

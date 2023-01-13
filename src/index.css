@@ -17,8 +17,13 @@ html {
   }
 }
 
+@media(orientation: landscape) {
+  body {
+    margin: 0 20vw 0 20vw;
+  }
+}
+
 body {
-  margin: 0 20vw 0 20vw;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

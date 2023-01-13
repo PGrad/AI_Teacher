@@ -25,7 +25,7 @@ html {
 
 @media(orientation: portrait) {
   body {
-    margin: 0 5vw 0 0;
+    margin: 0 5vw 0 2vw;
   }
 }
 

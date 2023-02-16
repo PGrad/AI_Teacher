@@ -7,3 +7,9 @@
     border-radius: 1em;
     box-shadow: .5em .5em .5em grey;
 }
+
+@media (max-width: 800px) {
+    .storyImg {
+        width: 50vw;
+    }
+}

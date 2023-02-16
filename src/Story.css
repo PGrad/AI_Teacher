@@ -1,18 +1,67 @@
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
+.story {
+  font-size: 1em;
+  font-family: "Roboto Mono";
+  padding: 2em;
+  margin: 1em;
+  border-radius: 2em;
+
+  background-clip:
+    padding-box, /* Clip white semi-transparent to the padding-box */
+    border-box /* Clip colored boxes to the border-box (default) */
+  ;
+  border: 0.3rem dotted transparent;
+  background-origin: border-box;
+  color: black;
+
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5)),
+
+    conic-gradient(
+      from 45deg, /* In case Houdini is not supported fallback to this. */
+      #d53e33 0deg 90deg,
+      #fbb300 90deg 180deg,
+      #377af5 180deg 270deg,
+      #399953 270deg 360deg
+    )
+  ;
 }
 
-@property --image-x-offset {
-  syntax: "<image-x-offset>";
-  initial-value: 0;
-  inherits: false;
-}
+@supports (background: paint(something)) {
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
 
-@keyframes rotate {
-  to {
-    --angle: 360deg;
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  .story {
+    background-image:
+      linear-gradient(
+        to right,
+        rgb(255 255 255 / 0.5),
+        rgb(255 255 255 / 0.5)
+      ),
+
+      conic-gradient(
+        from var(--angle),
+        #d53e33 0deg 90deg,
+        #fbb300 90deg 180deg,
+        #377af5 180deg 270deg,
+        #399953 270deg 360deg
+      )
+    ;
+
+    animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
+  }
+
+  .img {
+    left: calc(10px * cos(var(--angle)));
+    animation: rotate 4s linear infinite;
   }
 }
 
@@ -37,36 +86,6 @@
   }
 }
 
-.story {
-  font-size: 1em;
-  font-family: "Roboto Mono";
-  padding: 2em;
-  margin: 1em;
-  border-radius: 2em;
-
-  animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
-
-  background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5)),
-
-    conic-gradient(
-      from var(--angle),
-      #d53e33 0deg 90deg,
-      #fbb300 90deg 180deg,
-      #377af5 180deg 270deg,
-      #399953 270deg 360deg
-    )
-  ;
-
-  background-clip:
-    padding-box, /* Clip white semi-transparent to the padding-box */
-    border-box /* Clip colored boxes to the border-box (default) */
-  ;
-  border: 0.3rem dotted transparent;
-  background-origin: border-box;
-  color: black;
-}
-
 .story-text {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
@@ -87,8 +106,6 @@
   align-items: center;
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
-  left: calc(10px * cos(var(--angle)));
-  animation: rotate 4s linear infinite;
 }
 
 .paused {

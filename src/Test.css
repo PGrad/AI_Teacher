@@ -28,16 +28,8 @@
     border-radius: 5px;
 }
 
-@media(prefers-color-scheme: light) {
-    .test {
-        background-color: #fff0f8;
-        border-color: black;
-    }
-}
-
-@media(prefers-color-scheme: dark) {
-    .test {
-        background-color: #001d0e; /* Inverted color times two for a little pop */
-        border-color: white;
-    }
+.test {
+    background-color: #001d0e; /* Inverted color times two for a little pop */
+    color: white;
+    border-color: white;
 }

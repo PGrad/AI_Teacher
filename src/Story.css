@@ -1,38 +1,96 @@
-@keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }   
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --image-x-offset {
+  syntax: "<image-x-offset>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@media(min-width: 800px) {
+  .story {
+    display: grid;
+    grid-template-columns: "1fr 1fr";
+    grid-template-rows: "1fr 1fr";
+    column-gap: 5em;
+    row-gap: 5em;
+  }
+}
+
+@media(max-width: 800px) {
+  .story {
+    display: flex;
+    flex-direction: column;
+  }
+  .img {
+    order: -1;
+    justify-content: center;
+  }
 }
 
 .story {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 50px;
-  animation: floating 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  padding: 10px;
-  font-size: 20px;
+  font-size: 1em;
   font-family: "Roboto Mono";
+  padding: 2em;
+  margin: 1em;
+  border-radius: 2em;
+
+  animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
+
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5)),
+
+    conic-gradient(
+      from var(--angle),
+      #d53e33 0deg 90deg,
+      #fbb300 90deg 180deg,
+      #377af5 180deg 270deg,
+      #399953 270deg 360deg
+    )
+  ;
+
+  background-clip:
+    padding-box, /* Clip white semi-transparent to the padding-box */
+    border-box /* Clip colored boxes to the border-box (default) */
+  ;
+  border: 0.3rem dotted transparent;
+  background-origin: border-box;
+  color: black;
 }
 
-@media(prefers-color-scheme: light) {
-  .story {
-    background-color: aliceblue;
-    box-shadow: 10px 10px gray;
-  }
+.story-text {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  display: flex;
+  flex-direction: column;
 }
 
-@media(prefers-color-scheme: dark) {
-  .story {
-    background-color: #1d0e00; /* Inverted color times two for a little pop */
-    box-shadow: 10px 10px #6f6f6f;
-  }
+.story-test {
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 1;
+  display: flex;
+  place-content: center;
 }
 
-.loading {
-  margin: auto;
-  text-align: center;
-  font-family: "Rubik Bubbles";
+.img {
+  display: flex;
+  position: relative;
+  align-items: center;
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  left: calc(10px * cos(var(--angle)));
+  animation: rotate 4s linear infinite;
+}
+
+.paused {
+  animation-play-state: paused;
 }

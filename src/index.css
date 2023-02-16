@@ -17,13 +17,11 @@ html {
   }
 }
 
-@media(orientation: landscape) {
-  body {
-    margin: 0 20vw 0 20vw;
-  }
+body {
+  margin: 0 10vw 0 10vw;
 }
 
-@media(orientation: portrait) {
+@media(max-width: 800px) {
   body {
     margin: 0 5vw 0 2vw;
   }

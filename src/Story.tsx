@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Api from './api';
+import * as Api from './Api';
 import './Story.css';
 import ImageCard from './ImageCard';
 import StoryText from './StoryText';
@@ -23,24 +23,32 @@ function getQuestions(sentence: string): string[] {
 function Story() {
   const { target, level } = useParams();
   const base = useLangContext();
-  let [storyHeading, setStoryHeading] = useState<string>("");
-  let [storyText, setStoryText] = useState<string[]>([]);
-  let [storyImg, setStoryImg] = useState<string>("");
-  let [storyQuestions, setStoryQuestions] = useState<string[]>([]);
-  let [showTest, setShowTest] = useState<boolean>(false);
+  const [storyHeading, setStoryHeading] = useState<string>("");
+  const [storyText, setStoryText] = useState<string[]>([]);
+  const [storyImg, setStoryImg] = useState<string>("");
+  const [storyQuestions, setStoryQuestions] = useState<string[]>([]);
+  const [showTest, setShowTest] = useState<boolean>(false);
 
   useEffect(() => {
     Api.getStoryText(`write me a story with a title in ${target} at a ${level} reading level and then make 4 questions in ${base} based on the story.`).then((data) => {
-      let text = makeReadable(data.data.choices[0].text!);
-      const questions = getQuestions(text.splice(text.length - 1)[0]);
-      const title = text[1].split(":")[1];
+      const text = data.data.choices[0].text;
+      if (!text)
+        throw Error("Couldn't generate text.");
+
+      let readableText = makeReadable(text);
+      const questions = getQuestions(readableText.splice(readableText.length - 1)[0]);
+      const title = readableText[1].split(":")[1];
       setStoryHeading(title);
-      text = text.slice(2);
-      text.splice(text.length - 1);
-      setStoryText(text);
+      readableText = readableText.slice(2);
+      readableText.splice(readableText.length - 1);
+      setStoryText(readableText);
       setStoryQuestions(questions);
-      Api.getStoryImage(text[1]).then((data) => {
-        setStoryImg(data.data.data[0].url!);
+      Api.getStoryImage(readableText[1]).then((data) => {
+        const url = data.data.data[0].url;
+        if (!url)
+          throw Error("Couldn't generate image.");
+
+        setStoryImg(url);
       });
     });
   }, [target, level, base]); // These should never change, but the linter wants them added to the dependencies.

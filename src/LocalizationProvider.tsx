@@ -43,16 +43,16 @@ interface LocalProps {
     lang: string
 }
 
-export function LocalizationProvider(props: React.PropsWithChildren<LocalProps>) {
+export function LocalizationProvider({ lang, children }: React.PropsWithChildren<LocalProps>) {
     // default to this if browser language is unknown.
-    let lang: AcceptedLang = "en";
-    if (isAcceptedLang(props.lang)) {
-        lang = props.lang;
+    let acceptedLang: AcceptedLang = "en";
+    if (isAcceptedLang(lang)) {
+        acceptedLang = lang;
     }
 
     return (
-        <LocalContext.Provider value={lang}>
-            {props.children}
+        <LocalContext.Provider value={acceptedLang}>
+            {children}
         </LocalContext.Provider>
     );
 }

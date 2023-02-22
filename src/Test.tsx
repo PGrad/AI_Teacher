@@ -22,8 +22,8 @@ function Finish() {
     )
 }
 
-function Test(props: TestProps) {
-    let [done, setDone] = useState(false);
+function Test({ questions }: TestProps) {
+    const [done, setDone] = useState(false);
     const onDone = () => {
         setDone(true);
     };
@@ -31,7 +31,7 @@ function Test(props: TestProps) {
         <div className="flush test">
             <h3 className="heading">Test</h3>
             <ul style={{ listStyleType: "none", padding: 0 }}>
-                {props.questions.map((q, idx) =>
+                {questions.map((q, idx) =>
                     <div key={idx} className="question">
                         <li>{`${q}?`}</li>
                         <TextareaAutosize className="textarea" minRows={3} />

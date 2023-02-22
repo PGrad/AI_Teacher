@@ -4,13 +4,13 @@ interface StoryTextProps {
     paragraphs: string[];
 }
 
-function StoryText(props: StoryTextProps) {
+function StoryText({ paragraphs }: StoryTextProps) {
     return (
-        <div>
-            {props.paragraphs.map((pgraph, idx) => 
+        <>
+            {paragraphs.map((pgraph, idx) => 
                 <p key={idx} className="storyText">{pgraph}</p>
             )}
-        </div>
+        </>
     );
 }
 

@@ -4,10 +4,10 @@ interface ImageProps {
     imgName: string;
 }
 
-function ImageCard(props: ImageProps) {
+function ImageCard({ imgName }: ImageProps) {
     return (
         <div className="imageCard">
-            <img className="storyImg" src={props.imgName} alt={"you're missing out!"} />
+            <img className="storyImg" src={imgName} alt={"you're missing out!"} />
         </div>
     );
 }

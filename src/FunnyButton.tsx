@@ -5,7 +5,7 @@ interface FunnyButtonProps {
     onClick: () => void;
 }
 
-export default function FunnyButton(props: React.PropsWithChildren<FunnyButtonProps>) {
+export default function FunnyButton({ onClick, children }: React.PropsWithChildren<FunnyButtonProps>) {
     return (
         <Button
             sx={{
@@ -17,9 +17,9 @@ export default function FunnyButton(props: React.PropsWithChildren<FunnyButtonPr
                 color: "white"
             }}
             variant="contained"
-            onClick={props.onClick}
+            onClick={onClick}
         >
-            {props.children}
+            {children}
         </Button>
     );
 }

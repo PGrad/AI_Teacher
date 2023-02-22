@@ -1,7 +1,7 @@
 import { createTheme, Theme, ThemeProvider, useMediaQuery } from "@mui/material";
 import { useEffect, useMemo } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
-import Api from "./api";
+import * as Api from "./Api";
 import CreateStory from "./CreateStory";
 import { LocalizationProvider } from "./LocalizationProvider";
 import Story from "./Story";

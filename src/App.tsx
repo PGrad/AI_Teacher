@@ -36,14 +36,14 @@ export default function App() {
                 <meta property="og:title" content="AI Language Teacher" />
                 <meta property="og:description" content="Learn languages with AI!"/>
                 <meta property="og:url" content="https://pgrad.github.io/AI_Teacher/" />
-                <meta property="og:image" content="%PUBLIC_URL%/Thumbnail.png" />
+                <meta property="og:image" content={`${process.env.PUBLIC_URL}/Thumbnail.png`} />
 
                 <meta name="twitter:card" content="summary_large_image"/>
                 <meta property="twitter:domain" content="pgrad.github.io"/>
                 <meta property="twitter:url" content="https://pgrad.github.io/AI_Teacher/"/>
                 <meta name="twitter:title" content="AI Language Teacher"/>
                 <meta name="twitter:description" content="Learn languages with AI!"/>
-                <meta name="twitter:image" content="%PUBLIC_URL%/Thumbnail.png" />
+                <meta name="twitter:image" content={`${process.env.PUBLIC_URL}/Thumbnail.png`} />
             </Helmet>
             <ThemeProvider theme={theme}>
                 <LocalizationProvider lang={navigator.language.split("-")[0]}>
